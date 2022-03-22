@@ -23,8 +23,8 @@ exports.run = async (client, message, args) => {
         .setTimestamp()
         const msg = await discordChannel.send({embeds: [reportMessage]});
 
-        console.log(`[DiscordBot/Report] Report de ${message.author.username} armazenada com sucesso!`);
-        console.log(`[DiscordBot/Report] Mensagem: ${message.content}`);
+        console.log(`[Commands/Report] Report de ${message.author.username} armazenada com sucesso!`);
+        console.log(`[Commands/Report] Mensagem: ${message.content}`);
 
         await message.author.send(`Obrigado ${message.author.username}, por ajudar a manter nossa comunidade limpa!`)
     }
