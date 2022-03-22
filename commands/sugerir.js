@@ -25,7 +25,10 @@ exports.run = async (client, message, args) => {
       .setTimestamp()
     const msg = await discordChannel.send({ embeds: [sugestionMessage]});
     
-    await message.channel.send(`${message.author.username} sua sugestão foi enviada com sucesso!`);
+    console.log(`[DiscordBot] Sugestão de ${message.author.username} armazenada com sucesso.`)
+    console.log(`[DiscordBot] Mensagem: ${message.content}`)
+    
+    await message.author.send(`Obrigado ${message.author.username}!!! Sua sugestão foi enviada com sucesso.`);
     
     const emojis = ["✅", "❎"];
     

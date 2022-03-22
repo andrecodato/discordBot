@@ -1,3 +1,5 @@
+console.log("[DiscordBot] Iniciando ...")
+console.log("[DiscordBot] Carregando módulos do node...")
 const express = require('express');
 const app = express();
 require('dotenv').config();
@@ -10,15 +12,16 @@ app.get("/", (request, response) => {
 });
 app.listen(process.env.PORT); // Recebe solicitações que o deixa online
 
+console.log("[DiscordBot] Carregando módulo discord.js...")
 const Discord = require("discord.js"); //Conexão com a livraria Discord.js
 const { Client, Intents } = require('discord.js');
 const client = new Discord.Client({
  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] }); //Criação de um novo Client
  
-const config = require("./config.json"); //Pegando o prefixo do bot para respostas de comandos
+ const config = require("./config.json"); //Pegando o prefixo do bot para respostas de comandos
+ console.log(`[DiscordBot] Prefixo do bot = ${config.prefix}`)
 
 client.on("messageCreate", message => {
-  console.log(message);
   if (message.author.bot) return;
   if (message.channel.type == "dm") return;
   if (!message.content.toLowerCase().startsWith(config.prefix)) return;
@@ -27,11 +30,8 @@ client.on("messageCreate", message => {
   const args = message.content
     .trim().slice(config.prefix.length)
     .split(/ +/g);
-  console.log(args);
 
   const command = args.shift().toLowerCase();
-
-  console.log(command);
 
   try {
     const commandFile = require(`./commands/${command}.js`)
@@ -43,3 +43,4 @@ client.on("messageCreate", message => {
 
 const mySecret = process.env.TOKEN;
 client.login(mySecret); //Ligando o Bot caso ele consiga acessar o token
+console.log(`[DiscordBot] Bot ligado e ouvindo ✅👂`)
