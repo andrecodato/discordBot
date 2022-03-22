@@ -1,7 +1,7 @@
 
 # Discord Bot
 
-![GitHub repo size](https://img.shields.io/github/repo-size/andrecodato/DiscordBot?style=for-the-badge)![GitHub language count](https://img.shields.io/github/languages/count/andrecodato/DiscordBot?style=for-the-badge)![GitHub forks](https://img.shields.io/github/forks/andrecodato/DiscordBot?style=for-the-badge)![Bitbucket open issues](https://img.shields.io/bitbucket/issues/andrecodato/DiscordBot?style=for-the-badge)![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/andrecodato/DiscordBot?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/andrecodato/DiscordBot?style=for-the-badge) ![GitHub language count](https://img.shields.io/github/languages/count/andrecodato/DiscordBot?style=for-the-badge) ![GitHub forks](https://img.shields.io/github/forks/andrecodato/DiscordBot?style=for-the-badge) ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/andrecodato/DiscordBot?style=for-the-badge) ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/andrecodato/DiscordBot?style=for-the-badge)
 
 > Bot para discord feito com o propósito de diversão e moderação de canais
 > Feito com node, express e discord.js
