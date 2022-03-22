@@ -25,6 +25,7 @@ Então digite os comandos abaixo:
 <cd DiscordBot>
 <npm install express>
 <npm install discord.js>
+<echo "TOKEN="TOKEN_DO_BOT_AQUI"" >> .env>
 <node index.js>
 
 ```
