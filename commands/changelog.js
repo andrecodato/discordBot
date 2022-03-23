@@ -19,6 +19,8 @@ exports.run = async (client, message, args) => {
             (ch) => ch.id === "951262290886414427"  
         );
 
+        message.channel.send("||@everyone||");
+
         let reportMessage = new Discord.MessageEmbed()
         .setColor("#FFD433")
         .setTitle("📂 Changelog")
