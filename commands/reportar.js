@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
 
     if (!args[0]) {
         return message.author.send(
-            `Salvee ${message.author.username}, obrigado por ajudar o server reportando. `
+            `Salvee ${message.author.username}, digite a denúncia após o comando !reportar. `
         );
     } else if (content.length > 1000) {
         return message.author.send(
