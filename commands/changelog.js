@@ -4,7 +4,9 @@ exports.run = async (client, message, args) => {
     message.delete();
     const content = args.join(" ");
 
-    if (!args[0]) {
+    if (!member.roles.cache.has('948403289484046356') || member.roles.cache.some(role => role.name === 'A D M')){
+        message.author.send("Você não é ADM pra usar ese comando");
+    } else if (!args[0]) {
         return message.author.send(
             `Salvee ${message.author.username}, digite o changelog depois do comando !changelog. `
         );
@@ -16,6 +18,7 @@ exports.run = async (client, message, args) => {
         var discordChannel = message.guild.channels.cache.find(
             (ch) => ch.id === "951262290886414427"  
         );
+
         let reportMessage = new Discord.MessageEmbed()
         .setColor("#FFD433")
         .setTitle("📂 Changelog")
@@ -28,6 +31,7 @@ exports.run = async (client, message, args) => {
         console.log("[Commands/Changelog] Changelog enviado com sucesso");
         console.log(`[Commands/Changelog] Mensagem: ${message.content}`);
 
-        await message.author.send("Changelog enviado com sucesso")
+        await message.author.send("Changelog enviado com sucesso");
+        
     }
 }
