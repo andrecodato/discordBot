@@ -4,7 +4,7 @@ exports.run = async (client, message, args) => {
     message.delete();
     const content = args.join(" ");
 
-    if (!member.roles.cache.has('948403289484046356') || member.roles.cache.some(role => role.name === 'A D M')){
+    if (!message.member.roles.cache.has('948403289484046356')){
         message.author.send("Você não é ADM pra usar ese comando");
     } else if (!args[0]) {
         return message.author.send(
@@ -23,7 +23,7 @@ exports.run = async (client, message, args) => {
         .setColor("#FFD433")
         .setTitle("📂 Changelog")
         .setDescription("Atualizações feitas no dia de hoje")
-        .addFields({name: "Mudanças:", value:'${content}'})
+        .addFields({name: "Mudanças:", value: `${content}`})
         .setTimestamp()
         .setFooter({text: 'ChacalCraft 2022', iconURL: 'https://imgur.com/IInwmy0'})
         const msg = await discordChannel.send({embeds: [reportMessage]});
