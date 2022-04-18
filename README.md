@@ -3,36 +3,23 @@
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/andrecodato/DiscordBot?style=for-the-badge) ![GitHub language count](https://img.shields.io/github/languages/count/andrecodato/DiscordBot?style=for-the-badge) ![GitHub forks](https://img.shields.io/github/forks/andrecodato/DiscordBot?style=for-the-badge) ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/andrecodato/DiscordBot?style=for-the-badge) ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/andrecodato/DiscordBot?style=for-the-badge)
 
-> Bot para discord feito com o propósito de diversão e moderação de canais
+> A Discord bot made for fun and administration proposes
 
-> Feito com JavaScript e Node.js
+> Made with JavaScript and Node.js
 
-## 💻 Pré-requisitos
+## 💻 Pre-requisites
 
-Antes de começar, verifique se você atendeu aos seguintes requisitos:
-* Você instalou a versão mais recente de `<nodejs / npm express / npm discord.js>`
-* Você tem uma máquina `<Windows / Linux / Mac>`.
+Before we start, verify if you have done this:
+* Install last `<Node.js>` version.
 
-## 🚀 Instalar DiscordBot
+## 🚀 Install DiscordBot
 
-Para instalar o ```DiscordBot```, siga estas etapas:
+In order to install ```DiscordBot```, follow the steps on WIKI:
 
-Linux / Windows PowerShell:
-```
-Selecione o diretório desejado e abra o ```Terminal``` nele
-Então digite os comandos abaixo:
+https://andre-codato.gitbook.io/andrecodatos-discord-bot/
 
-<git clone https://github.com/andrecodato/DiscordBot>
-<cd DiscordBot>
-<npm install express>
-<npm install discord.js>
-<echo "TOKEN="TOKEN_DO_BOT_AQUI"" >> .env>
-<node index.js>
+## 📝 License
 
-```
+This project is under ```MIT``` license. 
 
-## 📝 Licença
-
-Esse projeto está sob licença ```MIT```. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
-
-[⬆ Voltar ao topo](#DiscordBot)<br>
+[⬆ Back to top](#DiscordBot)<br>
