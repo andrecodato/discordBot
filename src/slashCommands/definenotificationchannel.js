@@ -4,43 +4,43 @@ const GuildSettings = require("../models/GuildSettings");
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("definircanalnotificacoes")
-        .setDescription("Escolhe o canal de notificações!")
+        .setName("definenotificationchannel")
+        .setDescription("Set notification channel!")
         .addChannelOption(option => option
-            .setName("canal-notificacoes")
-            .setDescription("O canal de notificações")	
+            .setName("notification-channel")
+            .setDescription("Notification channel")	
             .setRequired(true)
         ),
     async execute(interaction) {
         // Check for admin permissions
         if (!interaction.member.permissions.has([Permissions.FLAGS.ADMINISTRATOR])) {
-            interaction.reply("Você não tem permissão para executar este comando!");
+            interaction.reply("You don't have permission to execute this command!");
             return;
         }
 
         GuildSettings.findOne({ guild_id: interaction.guild.id }, (err, settings) => {
             if (err) {
                 console.log(err);
-                interaction.reply("Ocorreu um erro ao salvar as configurações!");
+                interaction.reply("An error ocurred! notification channel not saved!");
                 return;
             }
 
             if (!settings) {
                 settings = new GuildSettings({
                     guild_id: interaction.guild.id,
-                    notification_channel_id: interaction.options.getChannel("canal-notificacoes").id
+                    notification_channel_id: interaction.options.getChannel("notification-channel").id
                 });
             } else {
-                settings.notification_channel_id = interaction.options.getChannel("canal-notificacoes").id;
+                settings.notification_channel_id = interaction.options.getChannel("notification-channel").id;
             }
 
             settings.save(err => {
                 if (err) {
-                    interaction.reply("Ocorreu um erro ao salvar as configurações!");
+                    interaction.reply("An error ocurred! suggestion channel not saved!");
                     return;
                 }
 
-                interaction.reply(`Canal de notificações definido com sucesso para ${interaction.options.getChannel("canal-notificacoes")}`);
+                interaction.reply(`Notification channel defined to ${interaction.options.getChannel("notification-channel")}`);
             })
         })
     }

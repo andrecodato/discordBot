@@ -4,43 +4,43 @@ const GuildSettings = require("../models/GuildSettings");
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("definircanalboasvindas")
-        .setDescription("Escolhe o canal de boas-vindas!")
+        .setName("definewelcomechannel")
+        .setDescription("Set welcome channel!")
         .addChannelOption(option => option
-            .setName("canal-boasvindas")
-            .setDescription("O canal de boas-vindas")
+            .setName("welcome-channel")
+            .setDescription("Welcome channel")
             .setRequired(true)
         ),
     async execute(interaction) {
         // Check for admin permissions
         if (!interaction.member.permissions.has([Permissions.FLAGS.ADMINISTRATOR])) {
-            interaction.reply("Você não tem permissão para executar este comando!");
+            interaction.reply("You don't have permission to execute this command!");
             return;
         }
 
         GuildSettings.findOne({ guild_id: interaction.guild.id }, (err, settings) => {
             if (err) {
                 console.log(err);
-                interaction.reply("Ocorreu um erro ao salvar as configurações!");
+                interaction.reply("An error ocurred! welcome channel not saved!");
                 return;
             }
 
             if (!settings) {
                 settings = new GuildSettings({
                     guild_id: interaction.guild.id,
-                    welcome_channel_id: interaction.options.getChannel("canal-boasvindas").id
+                    welcome_channel_id: interaction.options.getChannel("welcome-channel").id
                 });
             } else {
-                settings.welcome_channel_id = interaction.options.getChannel("canal-boasvindas").id;
+                settings.welcome_channel_id = interaction.options.getChannel("welcome-channel").id;
             }
 
             settings.save(err => {
                 if (err) {
-                    interaction.reply("Ocorreu um erro ao salvar as configurações!");
+                    interaction.reply("An error ocurred! suggestion channel not saved!");
                     return;
                 }
 
-                interaction.reply(`Canal de boas vindas definido com sucesso para ${interaction.options.getChannel("canal-boasvindas")}`);
+                interaction.reply(`Welcome channel defined to ${interaction.options.getChannel("welcome-channel")}`);
             })
         })
     }

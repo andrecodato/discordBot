@@ -1,16 +1,16 @@
 ///////////////////////////////////////////////////////////////////////////////
-// Name: Escravo do submundo
+// Name: Discord Bot
 // By: André Codato a.k.a. ChacalMoon
 // Language: javascript
 // Path: ./bot.js
-// Wiki: https://andre-codato.gitbook.io/stonerjesus_bot/
+// Wiki: https://andre-codato.gitbook.io/andrecodatos-discord-bot/
 ///////////////////////////////////////////////////////////////////////////////
 // Importing and initializing modules
 ///////////////////////////////////////////////////////////////////////////////
 require("dotenv").config();
 const fs = require("fs");
 
-const Database = require("./config/Database");
+const Database = require("./src/config/Database");
 const db = new Database();
 db.connect();
 
@@ -24,16 +24,16 @@ const client = new Client({
 });
 
 ///////////////////////////////////////////////////////////////////////////////
-// Registering commands
+// Registering administrative commands
 ///////////////////////////////////////////////////////////////////////////////
-const commandFiles = fs.readdirSync("./slashCommands").filter(file => file.endsWith(".js"));
+const commandFiles = fs.readdirSync("./src/slashCommands").filter(file => file.endsWith(".js"));
 
 const commands = [];
 
 client.commands = new Collection();
 
 for (const file of commandFiles) {
-    const command = require(`./slashCommands/${file}`);
+    const command = require(`./src/slashCommands/${file}`);
     commands.push(command.data.toJSON());
     client.commands.set(command.data.name, command);
 }
@@ -42,11 +42,11 @@ for (const file of commandFiles) {
 // Registering events
 ///////////////////////////////////////////////////////////////////////////////
 const eventFiles = fs
-    .readdirSync("./events")
+    .readdirSync("./src/events")
     .filter(file => file.endsWith(".js"));
 
 for (const file of eventFiles) {
-    const event = require(`./events/${file}`);
+    const event = require(`./src/events/${file}`);
     
     if (event.once) {
         client.once(event.name, (...args) => event.execute(...args, commands));

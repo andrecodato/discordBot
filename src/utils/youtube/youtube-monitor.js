@@ -1,3 +1,6 @@
+///////////////////////////////////////////////////////////////////////////////
+// Importing modules
+///////////////////////////////////////////////////////////////////////////////
 const { youtube } = require('../../config/config.js');
 const GuildSettings = require("../../models/GuildSettings");
 const CronJob = require('cron').CronJob;
@@ -5,13 +8,25 @@ const Discord = require('discord.js');
 
 module.exports = async (client) => {
     console.log('[YouTube] Monitorando canal do youtube por vídeos');
+
+    ///////////////////////////////////////////////////////////////////////////////
+    // Initializing CronJob tasks
+    //
+    // CronJob Syntax (For more details go to https://crontab.guru/)
+    // ┌───────────── minute (0 - 59)
+    // │ ┌───────────── hour (0 - 23)
+    // │ │ ┌───────────── month day (1 - 31)
+    // │ │ │ ┌───────────── month   (1 - 12)
+    // │ │ │ │ ┌───────────── week day (0 - 6)
+    // │ │ │ │ │
+    // │ │ │ │ │
+    // * * * * *
+    ///////////////////////////////////////////////////////////////////////////////
     new CronJob('* */12 * * *', async () => {
-        console.log("[Youtube] Teste cronjob");
-        
         const Youtube = require('youtube-notifs');  
-        Youtube.start(5, './utils/youtube/videoData.json');
+        Youtube.start(5, './utils/youtube/videoData.json'); // Start monitoring youtube channel for new videos
     
-        Youtube.events.on("newVid",async (obj) => {
+        Youtube.events.on("newVid",async (obj) => { // Execute when a new video is posted
             console.log('[YouTube] Notificando novo vídeo');
             
             const streamData = await GuildSettings.findOne({
@@ -25,6 +40,7 @@ module.exports = async (client) => {
             const channelName = obj.channel.name
             const channelUrl = obj.channel.url;
             
+            // Discord embed message schema
             const newNotifierEmbed = new Discord.MessageEmbed()
                 .setColor('#FF0000')
                 .setTitle('🔴 VIDEO NOVO')
@@ -45,6 +61,6 @@ module.exports = async (client) => {
             
             await message.react(youtube.REACT_EMOJI);
         });
-        Youtube.subscribe([youtube.CHANNEL_ID]);
+        Youtube.subscribe([youtube.CHANNEL_ID]); // subscribe to youtube channels
     }).start();
 };
