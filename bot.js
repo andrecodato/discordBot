@@ -26,14 +26,14 @@ const client = new Client({
 ///////////////////////////////////////////////////////////////////////////////
 // Registering administrative commands
 ///////////////////////////////////////////////////////////////////////////////
-const commandFiles = fs.readdirSync("./src/slashCommands").filter(file => file.endsWith(".js"));
+const commandFiles = fs.readdirSync("./src/commands/slashCommands").filter(file => file.endsWith(".js"));
 
 const commands = [];
 
 client.commands = new Collection();
 
 for (const file of commandFiles) {
-    const command = require(`./src/slashCommands/${file}`);
+    const command = require(`./src/commands/slashCommands/${file}`);
     commands.push(command.data.toJSON());
     client.commands.set(command.data.name, command);
 }

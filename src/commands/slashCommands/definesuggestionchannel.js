@@ -1,14 +1,14 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { Permissions } = require("discord.js");
-const GuildSettings = require("../src/models/GuildSettings");
+const GuildSettings = require("../../../src/models/GuildSettings");
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("definewelcomechannel")
-        .setDescription("Set welcome channel!")
+        .setName("definesuggestionchannel")
+        .setDescription("Set suggestion channel!")
         .addChannelOption(option => option
-            .setName("welcome-channel")
-            .setDescription("Welcome channel")
+            .setName("suggestion-channel")
+            .setDescription("suggestion channel")	
             .setRequired(true)
         ),
     async execute(interaction) {
@@ -21,17 +21,17 @@ module.exports = {
         GuildSettings.findOne({ guild_id: interaction.guild.id }, (err, settings) => {
             if (err) {
                 console.log(err);
-                interaction.reply("An error ocurred! welcome channel not saved!");
+                interaction.reply("An error ocurred! suggestion channel not saved!");
                 return;
             }
 
             if (!settings) {
                 settings = new GuildSettings({
                     guild_id: interaction.guild.id,
-                    welcome_channel_id: interaction.options.getChannel("welcome-channel").id
+                    suggestion_channel_id: interaction.options.getChannel("suggestion-channel").id
                 });
             } else {
-                settings.welcome_channel_id = interaction.options.getChannel("welcome-channel").id;
+                settings.suggestion_channel_id = interaction.options.getChannel("suggestion-channel").id;
             }
 
             settings.save(err => {
@@ -40,7 +40,7 @@ module.exports = {
                     return;
                 }
 
-                interaction.reply(`Welcome channel defined to ${interaction.options.getChannel("welcome-channel")}`);
+                interaction.reply(`Suggestion channel defined to ${interaction.options.getChannel("suggestion-channel")}`);
             })
         })
     }

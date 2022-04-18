@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Importing modules
 ///////////////////////////////////////////////////////////////////////////////
-const { youtube } = require('../../src/config/config.js');
-const GuildSettings = require("../../src/models/GuildSettings");
+const { youtube } = require('../../../src/config/config.js');
+const GuildSettings = require("../../../src/models/GuildSettings");
 const CronJob = require('cron').CronJob;
 const Discord = require('discord.js');
 
@@ -22,9 +22,9 @@ module.exports = async (client) => {
     // │ │ │ │ │
     // * * * * *
     ///////////////////////////////////////////////////////////////////////////////
-    new CronJob('* */12 * * *', async () => {
+    new CronJob('* */12 * * *', async () => { // default (* */12 * * *)
         const Youtube = require('youtube-notifs');  
-        Youtube.start(5, './utils/youtube/videoData.json'); // Start monitoring youtube channel for new videos
+        Youtube.start(5, './src/utils/youtube/videoData.json'); // Start monitoring youtube channel for new videos
     
         Youtube.events.on("newVid",async (obj) => { // Execute when a new video is posted
             console.log('[YouTube] Notificando novo vídeo');

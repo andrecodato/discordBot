@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const GuildSettings = require("../src/models/GuildSettings");
+const GuildSettings = require("../../src/models/GuildSettings");
 
 module.exports = {
     name: "guildMemberRemove",

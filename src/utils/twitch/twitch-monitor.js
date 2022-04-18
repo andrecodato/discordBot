@@ -2,8 +2,8 @@
 // Importing modules
 ///////////////////////////////////////////////////////////////////////////////
 const { getStream, getUser, getGame } = require('./twitch-api.js');
-const { twitch } = require('../../src/config/config.js');
-const GuildSettings = require("../../src/models/GuildSettings");
+const { twitch } = require('../../../src/config/config.js');
+const GuildSettings = require("../../../src/models/GuildSettings");
 const CronJob = require('cron').CronJob;
 const Discord = require("discord.js");
 
@@ -23,12 +23,12 @@ module.exports = async (client) => {
     // │ │ │ │ │
     // * * * * *
     ///////////////////////////////////////////////////////////////////////////////
-    new CronJob('*/30 * * * *', async () => {
+    new CronJob('*/1 * * * *', async () => { // default (*/30 * * * *)
+        const stream = await getStream(twitch.STREAMER);
         
         if (!stream) return; // If stream is offline
         
         if(stream.type == 'live'){ // If stream is online
-            const stream = await getStream(twitch.STREAMER);
             const user = await getUser(twitch.STREAMER);
             const game = await getGame(twitch.STREAMER);
 
