@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Importing and initializing modules
 ///////////////////////////////////////////////////////////////////////////////
-const cfg = require ('../../config/config.js');
+const cfg = require ('../../src/config/config.js');
 const nTwitch = require('node-twitch').default;
 
 const twitch = new nTwitch({

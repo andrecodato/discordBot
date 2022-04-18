@@ -2,8 +2,8 @@
 // Importing modules
 ///////////////////////////////////////////////////////////////////////////////
 const { getStream, getUser, getGame } = require('./twitch-api.js');
-const { twitch } = require('../../config/config.js');
-const GuildSettings = require("../../models/GuildSettings");
+const { twitch } = require('../../src/config/config.js');
+const GuildSettings = require("../../src/models/GuildSettings");
 const CronJob = require('cron').CronJob;
 const Discord = require("discord.js");
 

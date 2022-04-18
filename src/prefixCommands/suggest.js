@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const GuildSettings = require("../models/GuildSettings");
+const GuildSettings = require("../src/models/GuildSettings");
 
 exports.run = async (message, args) => {
     message.delete();

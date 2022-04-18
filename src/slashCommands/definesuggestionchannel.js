@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { Permissions } = require("discord.js");
-const GuildSettings = require("../models/GuildSettings");
+const GuildSettings = require("../src/models/GuildSettings");
 
 module.exports = {
     data: new SlashCommandBuilder()

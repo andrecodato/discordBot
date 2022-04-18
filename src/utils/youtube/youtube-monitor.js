@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Importing modules
 ///////////////////////////////////////////////////////////////////////////////
-const { youtube } = require('../../config/config.js');
-const GuildSettings = require("../../models/GuildSettings");
+const { youtube } = require('../../src/config/config.js');
+const GuildSettings = require("../../src/models/GuildSettings");
 const CronJob = require('cron').CronJob;
 const Discord = require('discord.js');
 
