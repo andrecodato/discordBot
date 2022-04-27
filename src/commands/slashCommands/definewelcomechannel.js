@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { Permissions } = require("discord.js");
-const GuildSettings = require("../../../src/models/GuildSettings");
+const Settings = require("../../../src/models/Settings");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -18,7 +18,7 @@ module.exports = {
             return;
         }
 
-        GuildSettings.findOne({ guild_id: interaction.guild.id }, (err, settings) => {
+        Settings.findOne({ guild_id: interaction.guild.id }, (err, settings) => {
             if (err) {
                 console.log(err);
                 interaction.reply("An error ocurred! welcome channel not saved!");
@@ -26,7 +26,7 @@ module.exports = {
             }
 
             if (!settings) {
-                settings = new GuildSettings({
+                settings = new Settings({
                     guild_id: interaction.guild.id,
                     welcome_channel_id: interaction.options.getChannel("welcome-channel").id
                 });

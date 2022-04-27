@@ -2,7 +2,7 @@
 // Importing modules
 ///////////////////////////////////////////////////////////////////////////////
 const { youtube } = require('../../../src/config/config.js');
-const GuildSettings = require("../../../src/models/GuildSettings");
+const Settings = require("../../../src/models/Settings");
 const CronJob = require('cron').CronJob;
 const Discord = require('discord.js');
 
@@ -29,7 +29,7 @@ module.exports = async (client) => {
         Youtube.events.on("newVid",async (obj) => { // Execute when a new video is posted
             console.log('[YouTube] Notificando novo vídeo');
             
-            const streamData = await GuildSettings.findOne({
+            const streamData = await Settings.findOne({
                 guild_id: client.id
             });
             const channel = client.channels.cache.get(streamData.notification_channel_id);

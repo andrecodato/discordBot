@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 const { getStream, getUser, getGame } = require('./twitch-api.js');
 const { twitch } = require('../../../src/config/config.js');
-const GuildSettings = require("../../../src/models/GuildSettings");
+const Settings = require("../../../src/models/Settings");
 const CronJob = require('cron').CronJob;
 const Discord = require("discord.js");
 
@@ -32,7 +32,7 @@ module.exports = async (client) => {
             const user = await getUser(twitch.STREAMER);
             const game = await getGame(twitch.STREAMER);
 
-            const streamData = await GuildSettings.findOne({
+            const streamData = await Settings.findOne({
                 user_id: user.id
             });
             const channel = client.channels.cache.get(streamData.notification_channel_id);
@@ -65,24 +65,28 @@ module.exports = async (client) => {
                 await message.react(twitch.REACT_EMOJI); // React to message
 
                 return await GuildSettings.create({ // Create db fields
-                    user_id: user.id,
-                    stream_id: stream.id,
-                    message_id: message.id
+                    notifiers:{
+                        user_id: user.id,
+                        stream_id: stream.id,
+                        message_id: message.id
+                    }
                 })
-            } else if (streamData.stream_id == stream.id) { // If stream is already notified, this will edit the last message
+            } else if (streamData.notifiers.stream_id == stream.id) { // If stream is already notified, this will edit the last message
                 console.log('[Twitch] Editando notificação anterior');
     
                 let message = await channel.messages
-                    .fetch(streamData.message_id)
+                    .fetch(streamData.notifiers.message_id)
                     .then((msg) => msg.edit({embeds: [newNotifierEmbed]}))
                     .catch(() => channel.send({embeds: [newNotifierEmbed]}))
                 
                 await message.react(twitch.REACT_EMOJI);
     
                 await streamData.updateOne({ // Update message and stream ids
-                    user_id: user.id,
-                    stream_id: stream.id,
-                    message_id: message.id
+                    notifiers:{
+                        user_id: user.id,
+                        stream_id: stream.id,
+                        message_id: message.id
+                    }
                 })
             } else { // If stream id doesn't match with old message sended, create a new message
                 console.log('[Twitch] Notificando live');
@@ -95,9 +99,11 @@ module.exports = async (client) => {
                 await message.react(twitch.REACT_EMOJI);
 
                 await streamData.updateOne({
-                    user_id: user.id,
-                    stream_id: stream.id,
-                    message_id: message.id
+                    notifiers:{
+                        user_id: user.id,
+                        stream_id: stream.id,
+                        message_id: message.id
+                    }
                 })
             };
         };

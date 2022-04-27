@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const GuildSettings = require("../../../models/GuildSettings");
+const Settings = require("../../../models/Settings");
 
 exports.run = async (message, args) => {
     message.delete();
@@ -14,7 +14,7 @@ exports.run = async (message, args) => {
             `${message.author.username}, Suggestion length must be min: 15, max: 1000 characters.`
         );
     } else {
-        const guildSettings = await GuildSettings.findOne({
+        const guildSettings = await Settings.findOne({
             guild_id: message.guild.id
         });
 

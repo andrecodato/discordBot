@@ -1,11 +1,11 @@
 const Discord = require("discord.js");
-const GuildSettings = require("../../src/models/GuildSettings");
+const Settings = require("../../src/models/Settings");
 
 module.exports = {
     name: "guildMemberAdd",
     async execute (member) {
         // member.guild.channels.cache.get("960661727064752138").send(`${member.user} entrou no server!`)
-        const guildSettings = await GuildSettings.findOne({ guild_id: member.guild.id });
+        const guildSettings = await Settings.findOne({ guild_id: member.guild.id });
 
         if (!guildSettings && !guildSettings.welcome_channel_id) return;
 
