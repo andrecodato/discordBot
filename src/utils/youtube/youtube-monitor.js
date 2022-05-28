@@ -7,7 +7,7 @@ const CronJob = require('cron').CronJob;
 const Discord = require('discord.js');
 
 module.exports = async (client) => {
-    console.log('[YouTube] Monitorando canal do youtube por vídeos');
+    console.log('[YouTube Monitor] Carregado! Status: ' + youtube.ACTIVE);
 
     ///////////////////////////////////////////////////////////////////////////////
     // Initializing CronJob tasks

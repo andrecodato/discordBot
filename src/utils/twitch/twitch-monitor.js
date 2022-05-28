@@ -8,7 +8,7 @@ const CronJob = require('cron').CronJob;
 const Discord = require("discord.js");
 
 module.exports = async (client) => {
-    console.log('[Twitch] Monitorando a stream!');
+    console.log('[Twitch Monitor] Carregado! Status: ' + twitch.ACTIVE);
 
     ///////////////////////////////////////////////////////////////////////////////
     // Initializing CronJob tasks

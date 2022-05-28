@@ -7,10 +7,10 @@ module.exports = {
         REACT_EMOJI: '<:twitch:956700382938165279>',
         NOTIFY_ROLE: '<@&964617545036496946>'
     },
-    youtube: {
+    youtube: { 
         ACTIVE: true,
         CHANNEL_ID: "UCujP-a-mol4jDN9vgBj9kLA",
         REACT_EMOJI: '<:youtube:956700383001067551>',
         NOTIFY_ROLE: '<@&964617503110221885>'
-    }
+    },
 };
