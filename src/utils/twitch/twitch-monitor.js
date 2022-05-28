@@ -23,7 +23,7 @@ module.exports = async (client) => {
     // │ │ │ │ │
     // * * * * *
     ///////////////////////////////////////////////////////////////////////////////
-    new CronJob('*/1 * * * *', async () => { // default (*/30 * * * *)
+    new CronJob('*/30 * * * *', async () => { // default (*/30 * * * *)
         const stream = await getStream(twitch.STREAMER);
         
         if (!stream) return; // If stream is offline
