@@ -1,4 +1,5 @@
 module.exports = {
+    prefix: '>',
     twitch: {
         ACTIVE: true,
         STREAMER: 'gaules',
