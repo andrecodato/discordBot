@@ -28,7 +28,7 @@ module.exports = async (client) => {
         
         if (!stream) return; // If stream is offline
         
-        if(stream.type == 'live'){ // If stream is online
+        if(stream.type == 'live' && twitch.ACTIVE) { // If stream is online
             const user = await getUser(twitch.STREAMER);
             const game = await getGame(twitch.STREAMER);
 
@@ -106,6 +106,8 @@ module.exports = async (client) => {
                     }
                 })
             };
+        } else {
+            return;
         };
     }).start();
 };
