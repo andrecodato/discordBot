@@ -10,7 +10,10 @@ node_modules/
 wiki/
 
 # Config files
-config/config.js
+src/config/config.js
 
 # Youtube data
 utils/youtube/videoData.json
+
+# Others
+.directory
