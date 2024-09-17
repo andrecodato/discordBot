@@ -21,26 +21,26 @@ module.exports = {
         Settings.findOne({ guild_id: interaction.guild.id }, (err, settings) => {
             if (err) {
                 console.log(err);
-                interaction.reply("An error ocurred! welcome channel not saved!");
+                interaction.reply("An error ocurred! wellcome channel not saved!");
                 return;
             }
 
             if (!settings) {
                 settings = new Settings({
                     guild_id: interaction.guild.id,
-                    welcome_channel_id: interaction.options.getChannel("welcome-channel").id
+                    welcome_channel_id: interaction.options.getChannel("wellcome-channel").id
                 });
             } else {
-                settings.welcome_channel_id = interaction.options.getChannel("welcome-channel").id;
+                settings.welcome_channel_id = interaction.options.getChannel("wellcome-channel").id;
             }
 
             settings.save(err => {
                 if (err) {
-                    interaction.reply("An error ocurred! suggestion channel not saved!");
+                    interaction.reply("An error ocurred! wellcome channel not saved!");
                     return;
                 }
 
-                interaction.reply(`Welcome channel defined to ${interaction.options.getChannel("welcome-channel")}`);
+                interaction.reply(`Welcome channel defined to ${interaction.options.getChannel("wellcome-channel")}`);
             })
         })
     }

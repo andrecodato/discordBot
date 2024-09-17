@@ -36,7 +36,7 @@ module.exports = {
 
             settings.save(err => {
                 if (err) {
-                    interaction.reply("An error ocurred! suggestion channel not saved!");
+                    interaction.reply("An error ocurred! notification channel not saved!");
                     return;
                 }
 

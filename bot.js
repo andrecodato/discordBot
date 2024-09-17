@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-// Name: CHACAL Discord Bot
+// Name: Umucraft Discord Bot
 // By: André Codato aka. ChacalMoon
 // Language: JavaScript
 // Path: ./bot.js

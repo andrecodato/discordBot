@@ -6,7 +6,7 @@ module.exports = {
     name:"ready",
     once: true,
     execute (client, commands) {
-        console.log("[BOT] Escravo do submundo está online!");
+        console.log("[BOT] Umuaramíssimo está online!");
 
         const CLIENT_ID = client.user.id;
 

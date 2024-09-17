@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const Settings = require("../../../models/Settings");
+const Settings = require("../../models/Settings");
 
 exports.run = async (message, args) => {
     message.delete();
@@ -7,11 +7,11 @@ exports.run = async (message, args) => {
 
     if (!args[0]) {
         return message.channel.send(
-            `${message.author.username}, write the suggestion after <>suggest>.`
+            `${message.author.username}, Digite a sugestão depois do comando >sugerir.`
         );
     } else if (content.length > 1000 || content.length < 15) {
         return message.channel.send(
-            `${message.author.username}, Suggestion length must be min: 15, max: 1000 characters.`
+            `${message.author.username}, Tamanho mínimo: 15, maximo: 1000 caracteres.`
         );
     } else {
         const guildSettings = await Settings.findOne({
@@ -20,7 +20,7 @@ exports.run = async (message, args) => {
 
         if (!guildSettings && !guildSettings.suggestion_channel_id) return;
 
-        var discordChannel = message.guild.channels.cache.get(guildSettings.sugestion_channel_id);
+        var discordChannel = message.guild.channels.cache.get(guildSettings.suggestion_channel_id);
 
         let suggestionMessage = new Discord.MessageEmbed()
             .setColor("#FF3333")

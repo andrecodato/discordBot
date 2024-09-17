@@ -14,11 +14,11 @@ module.exports = {
             .setTitle("Seja bem-vindo(a)")
             .setDescription(`${member.user} entrou no servidor!`)
             .addFields(
-                {name: "Siga-me:", value: ':twitch: stoner_jesus_ \n:youtube: Stoner_Jesus_666\n:facebook: stonerjesus666', inline: true},
-                {name: "Regras: ", value: '<#876612371169288193>', inline: true}
+                {name: "Siga-nos:", value: ':instagram: @umucraftminerama', inline: true},
+                {name: "Regras: ", value: '<#1277991513619431485>', inline: true}
             )
             .setThumbnail(member.user.displayAvatarURL())
-            .setImage("https://c.tenor.com/kyLaL3qYLsMAAAAd/insurgency-sandstorm.gif")
+            .setImage("https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGpuNzMza3YyOWc1NTl0bndhdjF5MnM4YmxpY2FrdWVveHIyZXIxZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Rsp9jLIy0VZOKlZziw/giphy.gif")
             .setTimestamp();
 
         member.guild.channels.cache.get(guildSettings.welcome_channel_id).send({
